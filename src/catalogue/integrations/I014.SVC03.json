@@ -1,0 +1,18 @@
+{
+  "id": "I014.SVC03",
+  "release": "",
+  "workload": "",
+  "source": [
+    "Warehouse Management"
+  ],
+  "target": [
+    "Data Warehouse"
+  ],
+  "dataFlow": "Inventory movements",
+  "pattern": "MFT?",
+  "sourceProtocol": "File",
+  "targetProtocol": "File (Blob Storage)",
+  "frequency": "Daily?",
+  "epic": null,
+  "notes": "Proposed; not yet approved."
+}

@@ -1,0 +1,17 @@
+{
+  "name": "integration-worldmap",
+  "private": true,
+  "type": "module",
+  "description": "Integration World Map - an integration map built from the catalogue in this repo",
+  "scripts": {
+    "build:data": "node src/scripts/build-data.mjs",
+    "check": "node src/scripts/build-data.mjs --check",
+    "excel": "pwsh -NoProfile -File src/scripts/excel.ps1",
+    "serve": "node src/scripts/serve.mjs",
+    "dev": "npm run build:data && npm run serve",
+    "test": "node --test \"src/scripts/test/*.test.mjs\""
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

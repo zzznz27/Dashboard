@@ -1,0 +1,21 @@
+{
+  "id": "I011.SVC02",
+  "release": "Release 1",
+  "workload": "OPS01",
+  "source": [
+    "Shipping Carrier"
+  ],
+  "target": [
+    "Warehouse Management"
+  ],
+  "dataFlow": "Tracking updates",
+  "pattern": "Publisher-Subscriber",
+  "sourceProtocol": "Event",
+  "targetProtocol": "API",
+  "frequency": "Every 30 minutes",
+  "epic": {
+    "id": "1011",
+    "url": "https://example.com/work-items/1011"
+  },
+  "notes": ""
+}

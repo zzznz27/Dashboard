@@ -1,0 +1,21 @@
+{
+  "id": "I003.SVC01",
+  "release": "Release 1",
+  "workload": "FIN02",
+  "source": [
+    "Payment Gateway"
+  ],
+  "target": [
+    "ERP"
+  ],
+  "dataFlow": "Card settlements",
+  "pattern": "Publisher-Subscriber (Claim-Check)",
+  "sourceProtocol": "File (CSV in S3 bucket)",
+  "targetProtocol": "API",
+  "frequency": "Daily",
+  "epic": {
+    "id": "1003",
+    "url": "https://example.com/work-items/1003"
+  },
+  "notes": ""
+}

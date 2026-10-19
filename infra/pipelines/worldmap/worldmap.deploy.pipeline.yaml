@@ -1,0 +1,143 @@
+# Builds the map data from src/catalogue/ in this repo, deploys the site, then (when publishWikiPage is on) rewrites
+# the generated "World Map Catalogue" wiki page. Register it as worldmap-deploy.
+# Runs when main changes (a merged catalogue PR, or code/config). The data only changes that way, so there's no
+# scheduled run. If the data has errors the run stops before deploying, so the last good map stays as it is.
+name: worldmap-deploy-pl-$(Build.BuildId)
+
+# One run at a time, in order: merges that land while a run is going are batched into the next run, so deploys
+# never overlap or finish out of order. (Also add an Exclusive Lock check on the DEV environment.)
+lockBehavior: sequential
+
+trigger:
+  batch: true
+  branches:
+    include: [main]
+  paths:
+    include: [src, package.json, package-lock.json]
+pr: none
+
+# Optional, and off by default. When on, the run also writes the generated page into an Azure DevOps wiki repo
+# (the wiki* variables below). It needs the project's build service to have Contribute on that repo
+# (infra/README.md, step 4). Either way the page is built and attached to each run as the wiki-page artifact.
+parameters:
+  - name: publishWikiPage
+    displayName: Update the generated wiki page (needs Contribute on the wiki repo)
+    type: boolean
+    default: false
+
+variables:
+  # Change these to your own.
+  - name: devServiceConnection
+    value: 'sc-contoso-wmap-dev' # Azure Resource Manager service connection for DEV
+  - name: devWebAppName
+    value: 'app-contoso-wmap-dev-01' # webAppName in infra/stacks/worldmap/parameters/parameters.worldmap.dev.json
+  # Only used when publishWikiPage is on. Keep them in step with generatedPage in src/config/source.json.
+  - name: wikiProject
+    value: 'YourProject' # Azure DevOps project that holds the wiki repo
+  - name: wikiRepository
+    value: 'Your.Wiki' # the wiki's Git repo; only written to, never read for data
+  - name: wikiBranch
+    value: 'main'
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: Build
+    jobs:
+      - job: Build
+        steps:
+          - checkout: self
+
+          - task: UseNode@1
+            inputs:
+              version: '24.x' # same as the web app (NODE|24-lts)
+
+          # Nothing to install: the tests use Node and PowerShell 7 (pwsh, for the Excel CSV script), both on the agent.
+          - script: npm test
+            displayName: Unit tests (includes checking the catalogue)
+
+          - script: node src/scripts/build-data.mjs
+            displayName: Build map data and the wiki page from src/catalogue/
+
+          - script: echo "##vso[task.uploadsummary]$(System.DefaultWorkingDirectory)/out/build-report.md"
+            condition: succeededOrFailed()
+            displayName: Attach build report to the run summary
+
+          # Maintainer notes (src/web/logos/SOURCES.md, src/web/vendor/VERSIONS.md) aren't part of the site, so they don't ship.
+          - script: |
+              set -e
+              mkdir -p "$(Build.ArtifactStagingDirectory)/site"
+              cp -r src/web src/server "$(Build.ArtifactStagingDirectory)/site/"
+              find "$(Build.ArtifactStagingDirectory)/site" -type f -name '*.md' -delete
+            displayName: Stage site files
+
+          - task: ArchiveFiles@2
+            inputs:
+              rootFolderOrFile: $(Build.ArtifactStagingDirectory)/site
+              includeRootFolder: false
+              archiveType: zip
+              archiveFile: $(Build.ArtifactStagingDirectory)/worldmap-site.zip
+
+          - publish: $(Build.ArtifactStagingDirectory)/worldmap-site.zip
+            artifact: site
+
+          - publish: out/wiki
+            artifact: wiki-page
+
+  - stage: DEV
+    dependsOn: Build
+    jobs:
+      - deployment: Site
+        displayName: Deploy site to DEV
+        environment: DEV
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: site
+
+                - task: AzureWebApp@1
+                  inputs:
+                    azureSubscription: ${{ variables.devServiceConnection }}
+                    appType: webAppLinux
+                    appName: $(devWebAppName)
+                    package: $(Pipeline.Workspace)/site/worldmap-site.zip
+                    # The app runs straight from the zip, swapped in one step: no half-copied files while a deploy
+                    # is running, and going back means redeploying an earlier run's zip.
+                    deploymentMethod: runFromPackage
+
+  # Only the generated page is checked out and written; nothing else in the wiki is touched. The wiki repo is
+  # checked out inline (not declared under resources), so the pipeline doesn't need it to exist while this is off.
+  - ${{ if eq(parameters.publishWikiPage, true) }}:
+    - stage: Wiki
+      displayName: Update the generated wiki page
+      dependsOn: DEV
+      jobs:
+        - job: Page
+          variables:
+            page: Integrations/World-Map-Catalogue.md
+          steps:
+            - checkout: git://${{ variables.wikiProject }}/${{ variables.wikiRepository }}@refs/heads/${{ variables.wikiBranch }}
+              persistCredentials: true
+              fetchDepth: 1
+              sparseCheckoutPatterns: |
+                /Integrations/World-Map-Catalogue.md
+
+            - download: current
+              artifact: wiki-page
+
+            - script: |
+                set -e
+                mkdir -p "$(dirname "$(page)")"
+                cp "$(Pipeline.Workspace)/wiki-page/$(page)" "$(page)"
+                if git ls-files --error-unmatch "$(page)" >/dev/null 2>&1 && git diff --quiet -- "$(page)"; then
+                  echo "The generated page is unchanged."
+                  exit 0
+                fi
+                git add -- "$(page)"
+                git -c user.name="World Map pipeline" -c user.email="worldmap-pipeline@noreply.invalid" \
+                  commit -m "Regenerate World Map Catalogue from $(Build.Repository.Name) $(Build.SourceVersion)"
+                git push origin HEAD:$(wikiBranch)
+              displayName: Commit the page if it changed

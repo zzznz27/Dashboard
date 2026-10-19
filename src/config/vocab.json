@@ -1,0 +1,46 @@
+{
+  "$comment": "Value clean-up. Each field lists canonical values and the spellings that map to them. Matching ignores case, spacing and punctuation, and a trailing '?' is stripped and recorded as 'uncertain'. Values that match nothing are kept as written and reported as a warning. A pattern with \"twoWay\": true (a request/response call) gets its own line with arrows at both ends, and dots that travel both ways.",
+  "unknownValues": ["TBC", "TBD", "Unknown", "?"],
+  "notApplicableValues": ["N/A", "NA", "None"],
+
+  "pattern": {
+    "Publisher-Subscriber":              { "group": "pubsub",   "aliases": ["Pub-Sub", "Pub Sub", "Publish-Subscribe"] },
+    "Publisher-Subscriber (Claim-Check)": { "group": "pubsub",   "aliases": ["Publisher-Subscriber with Claim-Check Pattern"] },
+    "Claim-Check":                       { "group": "pubsub",   "aliases": [] },
+    "Synchronous POST Request":          { "group": "pubsub",   "twoWay": true, "aliases": ["Synchronous POST", "Synchronous Request"] },
+    "MFT":                               { "group": "file",     "aliases": ["Managed File Transfer"] },
+    "OOTB":                              { "group": "platform", "aliases": ["Out of the box"] },
+    "Dual-Write":                        { "group": "platform", "aliases": [] }
+  },
+
+  "patternGroups": {
+    "pubsub":   { "label": "Publish-subscribe / API", "line": "solid" },
+    "file":     { "label": "File / MFT",              "line": "dashed" },
+    "platform": { "label": "Out of the box / Dual-write", "line": "dotted" },
+    "unknown":  { "label": "Not yet known",           "line": "thin" }
+  },
+
+  "protocol": {
+    "API":                     { "aliases": ["APIs"] },
+    "API (OData)":             { "aliases": [] },
+    "Event":                   { "aliases": ["Events"] },
+    "File":                    { "aliases": [] },
+    "File (SFTP)":             { "aliases": ["SFTP"] },
+    "File (CSV in S3 bucket)": { "aliases": [] },
+    "File (Blob Storage)":     { "aliases": [] },
+    "Recurring Export":        { "aliases": [] },
+    "Recurring Import":        { "aliases": [] },
+    "OOTB":                    { "aliases": [] }
+  },
+
+  "frequency": {
+    "Event-based":      { "speed": "fast",   "aliases": ["Event"] },
+    "Real-time":        { "speed": "fast",   "aliases": ["Realtime", "Real time"] },
+    "5 minutes":        { "speed": "fast",   "aliases": ["5 Mins", "5 min", "Every 5 minutes"] },
+    "Every 30 minutes": { "speed": "medium", "aliases": ["30 minutes", "30 Mins"] },
+    "Can be > 30 mins": { "speed": "medium", "aliases": [] },
+    "Daily":            { "speed": "slow",   "aliases": [] },
+    "Fortnightly":      { "speed": "slow",   "aliases": [] },
+    "Monthly":          { "speed": "slow",   "aliases": [] }
+  }
+}

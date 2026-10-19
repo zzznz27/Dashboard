@@ -1,0 +1,21 @@
+{
+  "id": "I014.SVC02",
+  "release": "Release 2",
+  "workload": "DAT01",
+  "source": [
+    "CRM"
+  ],
+  "target": [
+    "Data Warehouse"
+  ],
+  "dataFlow": "Customers and opportunities",
+  "pattern": "Publisher-Subscriber (Claim-Check)",
+  "sourceProtocol": "Recurring Export",
+  "targetProtocol": "File (Blob Storage)",
+  "frequency": "Daily",
+  "epic": {
+    "id": "1014",
+    "url": "https://example.com/work-items/1014"
+  },
+  "notes": ""
+}

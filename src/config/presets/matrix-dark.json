@@ -1,0 +1,13 @@
+{
+  "id": "matrix-dark",
+  "label": "Grid after dark",
+  "round": 1,
+  "view": "matrix",
+  "theme": "ops-dark",
+  "animation": {
+    "ambient": "packets"
+  },
+  "nodes": {
+    "logo": "mark"
+  }
+}

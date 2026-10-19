@@ -1,0 +1,4 @@
+{
+  "$comment": "Logos for the map's systems. Keys are system names (or aliases) as in catalogue/systems.json. logo = full-colour logo, shown in the side panel and tooltip. mark = the brand's symbol alone, drawn in white on the system's node; null when the brand has none (the node shows initials). Files live in web/logos/; record where each came from in web/logos/SOURCES.md, and check each brand's usage guidelines before adding it. Example entry: \"ERP\": { \"logo\": \"erp.svg\", \"mark\": \"erp-mark.svg\", \"source\": \"https://vendor.example/brand\", \"file\": \"https://vendor.example/brand/logo.svg\" }",
+  "systems": {}
+}

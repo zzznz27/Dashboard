@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "World Map: build data",
+      "detail": "Checks src/catalogue/ and writes src/web/data/ (run before the local preview)",
+      "type": "npm",
+      "script": "build:data",
+      "problemMatcher": [],
+      "presentation": { "reveal": "silent", "revealProblems": "never", "panel": "shared" }
+    },
+    {
+      "label": "World Map: deploy to DEV",
+      "detail": "Builds the data and zip-deploys this working copy to the DEV web app named in parameters.worldmap.dev.json (az login first)",
+      "type": "shell",
+      "command": "pwsh",
+      "args": ["-NoProfile", "-File", "${workspaceFolder}/src/scripts/deploy-dev.ps1"],
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true }
+    }
+  ]
+}

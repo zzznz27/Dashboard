@@ -1,0 +1,47 @@
+# Reusable platform-pipeline template: deploys one workload stack to one environment.
+# Used by <workload>.platform.pipeline.yaml. It runs a subscription-scope deployment of
+# infra/stacks/<workload>/deploy-<workload>-stack.bicep with infra/stacks/<workload>/parameters/parameters.<workload>.<env>.json.
+
+parameters:
+  - name: azureSubscription
+    type: string
+  - name: subscriptionId
+    type: string
+  - name: environment
+    type: string
+  - name: environmentCode
+    type: string
+  - name: deploymentLocation
+    type: string
+  - name: workloadCode
+    type: string
+
+jobs:
+  - deployment: Components
+    displayName: Deploy ${{ parameters.workloadCode }} stack to ${{ parameters.environment }}
+    environment: ${{ parameters.environment }}
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - checkout: self
+
+            - task: AzureCLI@2
+              displayName: Deploy ${{ parameters.workloadCode }} stack
+              inputs:
+                azureSubscription: ${{ parameters.azureSubscription }}
+                scriptType: pscore
+                scriptLocation: inlineScript
+                inlineScript: |
+                  $id = '$(Build.BuildId)'
+                  $prefix = '{0}-{1}' -f $id.Substring([Math]::Max(0, $id.Length - 7)), (Get-Date -Format 'HHmmss')
+                  $stack = 'infra/stacks/${{ parameters.workloadCode }}'
+                  az account set --subscription '${{ parameters.subscriptionId }}'
+                  az deployment sub create `
+                    --name "$prefix-${{ parameters.workloadCode }}-stack" `
+                    --location '${{ parameters.deploymentLocation }}' `
+                    --template-file "$stack/deploy-${{ parameters.workloadCode }}-stack.bicep" `
+                    --parameters "$stack/parameters/parameters.${{ parameters.workloadCode }}.${{ parameters.environmentCode }}.json" `
+                    --parameters deploymentPrefix=$prefix `
+                    --query properties.outputs
+                  if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

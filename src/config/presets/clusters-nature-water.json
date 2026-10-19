@@ -1,0 +1,24 @@
+{
+  "id": "clusters-nature-water",
+  "label": "Riverside",
+  "round": 3,
+  "view": "graph",
+  "layout": "clusters",
+  "theme": "nature",
+  "animation": {
+    "ambient": "water",
+    "onSelect": "focus-pulse",
+    "settle": true
+  },
+  "labels": {
+    "showDomain": false
+  },
+  "edges": {
+    "styleBy": "pattern",
+    "flagUncertain": true
+  },
+  "nodes": {
+    "logo": "mark"
+  },
+  "layoutOptions": {}
+}

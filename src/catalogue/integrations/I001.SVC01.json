@@ -1,0 +1,22 @@
+{
+  "id": "I001.SVC01",
+  "link": "https://example.com/wiki/integrations/I001",
+  "release": "Release 1",
+  "workload": "FIN01",
+  "source": [
+    "ERP"
+  ],
+  "target": [
+    "Bank"
+  ],
+  "dataFlow": "Supplier payment files",
+  "pattern": "MFT",
+  "sourceProtocol": "File (Blob Storage)",
+  "targetProtocol": "File (SFTP)",
+  "frequency": "Daily",
+  "epic": {
+    "id": "1001",
+    "url": "https://example.com/work-items/1001"
+  },
+  "notes": ""
+}

@@ -1,0 +1,21 @@
+{
+  "id": "I002.SVC01",
+  "release": "Release 1",
+  "workload": "FIN01",
+  "source": [
+    "Expense Management"
+  ],
+  "target": [
+    "ERP"
+  ],
+  "dataFlow": "Approved expense claims",
+  "pattern": "Publisher-Subscriber",
+  "sourceProtocol": "API",
+  "targetProtocol": "API",
+  "frequency": "Every 30 minutes",
+  "epic": {
+    "id": "1002",
+    "url": "https://example.com/work-items/1002"
+  },
+  "notes": ""
+}

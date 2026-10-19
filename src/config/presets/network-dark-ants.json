@@ -1,0 +1,24 @@
+{
+  "id": "network-dark-ants",
+  "label": "Night network",
+  "round": 1,
+  "view": "graph",
+  "layout": "network",
+  "theme": "ops-dark",
+  "animation": {
+    "ambient": "packets",
+    "onSelect": "focus-pulse",
+    "settle": true
+  },
+  "labels": {
+    "showDomain": true
+  },
+  "edges": {
+    "styleBy": "none",
+    "flagUncertain": true
+  },
+  "layoutOptions": {},
+  "nodes": {
+    "logo": "mark"
+  }
+}

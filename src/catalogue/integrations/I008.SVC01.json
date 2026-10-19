@@ -1,0 +1,22 @@
+{
+  "id": "I008.SVC01",
+  "link": "https://example.com/wiki/integrations/I008",
+  "release": "Release 1",
+  "workload": "HR01",
+  "source": [
+    "HR System"
+  ],
+  "target": [
+    "Payroll"
+  ],
+  "dataFlow": "New starters, changes and leavers",
+  "pattern": "Publisher-Subscriber",
+  "sourceProtocol": "API",
+  "targetProtocol": "API",
+  "frequency": "Event-based",
+  "epic": {
+    "id": "1008",
+    "url": "https://example.com/work-items/1008"
+  },
+  "notes": ""
+}

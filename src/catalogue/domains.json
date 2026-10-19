@@ -1,0 +1,29 @@
+{
+  "$comment": "Business domains, in order: the order sets each domain's colour on the map (8 colours). Add new domains at the end.",
+  "domains": [
+    {
+      "name": "Finance",
+      "description": "Ledger, payables, receivables, banking and expenses"
+    },
+    {
+      "name": "Customer",
+      "description": "Sales, marketing, online orders and customer service"
+    },
+    {
+      "name": "People",
+      "description": "Workforce, HR, payroll and learning"
+    },
+    {
+      "name": "Operations",
+      "description": "Inventory, warehousing, suppliers and shipping"
+    },
+    {
+      "name": "IT & Security",
+      "description": "Identity, devices and IT service management"
+    },
+    {
+      "name": "Data & Analytics",
+      "description": "Reporting and the data warehouse"
+    }
+  ]
+}

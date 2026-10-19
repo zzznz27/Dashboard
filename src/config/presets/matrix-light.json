@@ -1,0 +1,13 @@
+{
+  "id": "matrix-light",
+  "label": "Grid",
+  "round": 1,
+  "view": "matrix",
+  "theme": "clean-light",
+  "animation": {
+    "ambient": "packets"
+  },
+  "nodes": {
+    "logo": "mark"
+  }
+}

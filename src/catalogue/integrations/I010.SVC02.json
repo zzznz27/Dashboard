@@ -1,0 +1,18 @@
+{
+  "id": "I010.SVC02",
+  "release": "Release 2",
+  "workload": "HR02",
+  "source": [
+    "Learning Platform"
+  ],
+  "target": [
+    "HR System"
+  ],
+  "dataFlow": "Completed training",
+  "pattern": "TBC",
+  "sourceProtocol": "API",
+  "targetProtocol": "TBC",
+  "frequency": "TBC",
+  "epic": null,
+  "notes": "Design not started."
+}

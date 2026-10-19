@@ -1,0 +1,24 @@
+{
+  "id": "network-synthwave-pulse",
+  "label": "Synthwave",
+  "round": 3,
+  "view": "graph",
+  "layout": "network",
+  "theme": "synthwave",
+  "animation": {
+    "ambient": "pulse",
+    "onSelect": "focus-pulse",
+    "settle": true
+  },
+  "labels": {
+    "showDomain": false
+  },
+  "edges": {
+    "styleBy": "pattern",
+    "flagUncertain": true
+  },
+  "nodes": {
+    "logo": "mark"
+  },
+  "layoutOptions": {}
+}

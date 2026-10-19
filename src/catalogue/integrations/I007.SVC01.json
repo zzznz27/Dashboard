@@ -1,0 +1,21 @@
+{
+  "id": "I007.SVC01",
+  "release": "Release 2",
+  "workload": "CST02",
+  "source": [
+    "E-commerce Store"
+  ],
+  "target": [
+    "CRM"
+  ],
+  "dataFlow": "New online customers",
+  "pattern": "Publisher-Subscriber",
+  "sourceProtocol": "Event",
+  "targetProtocol": "API",
+  "frequency": "Event-based",
+  "epic": {
+    "id": "1007",
+    "url": "https://example.com/work-items/1007"
+  },
+  "notes": ""
+}

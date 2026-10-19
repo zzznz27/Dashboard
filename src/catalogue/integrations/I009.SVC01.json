@@ -1,0 +1,27 @@
+{
+  "id": "I009.SVC01",
+  "release": "Release 1",
+  "workload": "HR01",
+  "source": [
+    "HR System"
+  ],
+  "target": [
+    "Identity Provider"
+  ],
+  "dataFlow": "User accounts for joiners and leavers",
+  "pattern": "Publisher-Subscriber",
+  "sourceProtocol": "Event",
+  "targetProtocol": "API",
+  "frequency": "Event-based",
+  "epic": {
+    "id": "1009",
+    "url": "https://example.com/work-items/1009"
+  },
+  "notes": "",
+  "links": [
+    {
+      "text": "Joiner-mover-leaver process",
+      "url": "https://example.com/wiki/integrations/jml"
+    }
+  ]
+}

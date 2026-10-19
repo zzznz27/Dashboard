@@ -1,0 +1,24 @@
+{
+  "id": "clusters-space-lightning",
+  "label": "Space storm",
+  "round": 3,
+  "view": "graph",
+  "layout": "clusters",
+  "theme": "space",
+  "animation": {
+    "ambient": "lightning",
+    "onSelect": "focus-pulse",
+    "settle": true
+  },
+  "labels": {
+    "showDomain": false
+  },
+  "edges": {
+    "styleBy": "pattern",
+    "flagUncertain": true
+  },
+  "nodes": {
+    "logo": "mark"
+  },
+  "layoutOptions": {}
+}

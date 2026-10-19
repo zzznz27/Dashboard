@@ -1,0 +1,21 @@
+{
+  "id": "I012.SVC02",
+  "release": "Release 2",
+  "workload": "OPS02",
+  "source": [
+    "Supplier Portal"
+  ],
+  "target": [
+    "ERP"
+  ],
+  "dataFlow": "Supplier invoices",
+  "pattern": "Claim-Check",
+  "sourceProtocol": "File",
+  "targetProtocol": "API",
+  "frequency": "Can be > 30 mins",
+  "epic": {
+    "id": "1012",
+    "url": "https://example.com/work-items/1012"
+  },
+  "notes": ""
+}

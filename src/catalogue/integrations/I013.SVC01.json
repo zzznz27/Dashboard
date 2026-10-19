@@ -1,0 +1,18 @@
+{
+  "id": "I013.SVC01",
+  "release": "Release 2",
+  "workload": "ITS01",
+  "source": [
+    "Identity Provider"
+  ],
+  "target": [
+    "Service Desk"
+  ],
+  "dataFlow": "User directory",
+  "pattern": "OOTB",
+  "sourceProtocol": "OOTB",
+  "targetProtocol": "OOTB",
+  "frequency": "Daily",
+  "epic": null,
+  "notes": ""
+}

@@ -1,0 +1,21 @@
+{
+  "id": "I010.SVC01",
+  "release": "Release 2",
+  "workload": "HR02",
+  "source": [
+    "HR System"
+  ],
+  "target": [
+    "Learning Platform"
+  ],
+  "dataFlow": "Employees and roles",
+  "pattern": "Publisher-Subscriber",
+  "sourceProtocol": "API",
+  "targetProtocol": "API",
+  "frequency": "Daily",
+  "epic": {
+    "id": "1010",
+    "url": "https://example.com/work-items/1010"
+  },
+  "notes": ""
+}

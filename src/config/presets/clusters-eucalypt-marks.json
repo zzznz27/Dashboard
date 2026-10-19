@@ -1,0 +1,24 @@
+{
+  "id": "clusters-eucalypt-marks",
+  "label": "Eucalypt",
+  "round": 3,
+  "view": "graph",
+  "layout": "clusters",
+  "theme": "eucalypt",
+  "animation": {
+    "ambient": "flow",
+    "onSelect": "focus-pulse",
+    "settle": true
+  },
+  "labels": {
+    "showDomain": false
+  },
+  "edges": {
+    "styleBy": "pattern",
+    "flagUncertain": true
+  },
+  "nodes": {
+    "logo": "mark"
+  },
+  "layoutOptions": {}
+}

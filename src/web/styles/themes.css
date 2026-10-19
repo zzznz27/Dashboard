@@ -1,0 +1,250 @@
+/* Theme tokens. Every theme sets the same variables; components use only variables.
+   Domain colours are the validated categorical palette (slot order matters - see DESIGN.md §1).
+   Sequential ramp (--seq-*) is one hue for the matrix; --seq-ink-* is the text colour that clears contrast on each step. */
+
+:root,
+:root[data-theme="clean-light"] {
+  color-scheme: light;
+  /* Header mark: CH Navy structure with CH Blue and CH Cyan (brand guide v3.0 §4) */
+  --logo-ink: #003F72;
+  --logo-blue: #0073CF;
+  --logo-teal: #3DB7E4;
+  --font: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-heading: var(--font);
+  /* The header: no band of its own unless a theme gives it one. */
+  --header-bg: transparent; --header-ink: var(--ink); --header-ink-2: var(--ink-2);
+  --page: #f4f4f1;
+  --surface: #fcfcfb;
+  --surface-2: #f0efec;
+  --surface-3: #e5e4de;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #6a6964;
+  --hairline: #e1e0d9;
+  --border: rgba(11, 11, 11, 0.12);
+  --edge: #7d7b73;
+  --edge-unknown: #9a988f;
+  --focus: #0b0b0b;
+  --shadow: 0 6px 24px rgba(11, 11, 11, 0.10), 0 1px 3px rgba(11, 11, 11, 0.08);
+  --glow: 0;
+  --cluster-fill-opacity: 0.06;
+
+  --domain-1: #2a78d6;
+  --domain-2: #eb6834;
+  --domain-3: #1baf7a;
+  --domain-4: #eda100;
+  --domain-5: #e87ba4;
+  --domain-6: #008300;
+  --domain-7: #6250d6;
+  --domain-8: #e34948;
+  --domain-none: #a8a69e;
+
+  --seq-1: #cde2fb; --seq-ink-1: #0b0b0b;
+  --seq-2: #9ec5f4; --seq-ink-2: #0b0b0b;
+  --seq-3: #6da7ec; --seq-ink-3: #0b0b0b;
+  --seq-4: #256abf; --seq-ink-4: #ffffff;
+  --seq-5: #184f95; --seq-ink-5: #ffffff;
+
+  --warn: #fab219;
+
+  /* Effects (read by web/js/theme.js for the canvas views). Every theme starts from these and overrides some.
+     --stage-bg: the map's backdrop. --glow-strength: blur in px on flow dots. --node-glow / --edge-glow: opacity of
+     a coloured halo under every node / line (0 = none). --edge-tint: neutral lines, or lines in their domain colour.
+     --sky: an animated layer behind the map (none, stars, fireflies). --orbits / --planets: space-theme extras. */
+  --stage-bg: var(--surface);
+  --node-outline: #52514e; --node-outline-width: 1.5;
+  --glow-strength: 0;
+  --node-glow: 0;
+  --edge-glow: 0;
+  --edge-tint: neutral;
+  --edge-opacity: 0.9;
+  --label-bg-opacity: 0.88;
+  --sky: none;
+  --orbits: 0;
+  --planets: 0;
+}
+
+:root[data-theme="ops-dark"] {
+  color-scheme: dark;
+  /* Header mark reversed out: white structure, CH Cyan and a cyan tint */
+  --logo-ink: #FFFFFF;
+  --logo-blue: #3DB7E4;
+  --logo-teal: #9EDBF1;
+  --page: #0a111d;
+  --surface: #101a2b;
+  --surface-2: #15223a;
+  --surface-3: #1e2e4b;
+  --ink: #eef2f7;
+  --ink-2: #b9c3d3;
+  --muted: #8b97ab;
+  --hairline: #22314b;
+  --border: rgba(255, 255, 255, 0.10);
+  --edge: #64748f;
+  --edge-unknown: #55627b;
+  --focus: #eef2f7;
+  --shadow: 0 8px 28px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.4);
+  --glow: 1;
+  --glow-strength: 12;
+  --node-outline: var(--surface); --node-outline-width: 2;
+  --cluster-fill-opacity: 0.10;
+
+  --domain-1: #3987e5;
+  --domain-2: #d95926;
+  --domain-3: #199e70;
+  --domain-4: #c98500;
+  --domain-5: #d55181;
+  --domain-6: #008300;
+  --domain-7: #9085e9;
+  --domain-8: #e66767;
+  --domain-none: #6b778c;
+
+  --seq-1: #184f95; --seq-ink-1: #eef2f7;
+  --seq-2: #256abf; --seq-ink-2: #ffffff;
+  --seq-3: #3987e5; --seq-ink-3: #0b0b0b;
+  --seq-4: #6da7ec; --seq-ink-4: #0b0b0b;
+  --seq-5: #b7d3f6; --seq-ink-5: #0b0b0b;
+
+  --warn: #fab219;
+}
+
+/* ---- Round 3 themes (experimental, DESIGN.md §9). Domain colours keep 8 distinct hues per theme, but unlike the
+   two themes above they haven't been through the colour-blind check yet. ---- */
+
+/* Neon: near-black violet, saturated domain colours, every node and line glowing in its own colour. */
+:root[data-theme="neon"] {
+  --node-outline: var(--surface); --node-outline-width: 2;
+  color-scheme: dark;
+  --logo-ink: #FFFFFF; --logo-blue: #FF3DD5; --logo-teal: #00E5FF;
+  --page: #07060f; --surface: #0d0b1a; --surface-2: #151230; --surface-3: #1f1a45;
+  --ink: #f4f1ff; --ink-2: #c9c2ee; --muted: #8f87bd; --hairline: #231e48;
+  --border: rgba(180, 160, 255, 0.16); --edge: #5b5390; --edge-unknown: #34305a; --focus: #ffffff;
+  --shadow: 0 0 24px rgba(140, 90, 255, 0.22), 0 8px 28px rgba(0, 0, 0, 0.6);
+  --glow: 1; --cluster-fill-opacity: 0.07;
+  --domain-1: #00e5ff; --domain-2: #ff3dd5; --domain-3: #39ff88; --domain-4: #ffd400;
+  --domain-5: #ff7a3d; --domain-6: #9b6bff; --domain-7: #ff2e63; --domain-8: #3d8bff; --domain-none: #5f5a85;
+  --seq-1: #1c1640; --seq-ink-1: #f4f1ff;
+  --seq-2: #2e2370; --seq-ink-2: #f4f1ff;
+  --seq-3: #5a3fd0; --seq-ink-3: #ffffff;
+  --seq-4: #9b6bff; --seq-ink-4: #07060f;
+  --seq-5: #00e5ff; --seq-ink-5: #07060f;
+  --warn: #ffd400;
+  --stage-bg: radial-gradient(ellipse at 50% -10%, #241656 0%, #0d0b1a 55%, #07060f 100%);
+  --glow-strength: 22; --node-glow: 0.5; --edge-glow: 0.38; --edge-tint: domain; --label-bg-opacity: 0.72;
+}
+
+/* Synthwave: neon on a purple dusk with a perspective grid running to a glowing horizon (app.css draws the grid). */
+:root[data-theme="synthwave"] {
+  --node-outline: var(--surface); --node-outline-width: 2;
+  color-scheme: dark;
+  --logo-ink: #FFFFFF; --logo-blue: #FF71CE; --logo-teal: #2DE2E6;
+  --page: #120626; --surface: #1a0b33; --surface-2: #241046; --surface-3: #33175f;
+  --ink: #fff4fb; --ink-2: #e7c6f0; --muted: #b08bc4; --hairline: #3a1a63;
+  --border: rgba(255, 120, 220, 0.18); --edge: #7a4fa3; --edge-unknown: #45285f; --focus: #ffe66d;
+  --shadow: 0 0 24px rgba(255, 60, 180, 0.2), 0 8px 28px rgba(0, 0, 0, 0.55);
+  --glow: 1; --cluster-fill-opacity: 0.08;
+  --domain-1: #2de2e6; --domain-2: #ff3864; --domain-3: #f9c80e; --domain-4: #ff6c11;
+  --domain-5: #b967ff; --domain-6: #05ffa1; --domain-7: #ff71ce; --domain-8: #6d5dfc; --domain-none: #7d6593;
+  --seq-1: #2a1150; --seq-ink-1: #fff4fb;
+  --seq-2: #4a1a7a; --seq-ink-2: #fff4fb;
+  --seq-3: #8a2be2; --seq-ink-3: #ffffff;
+  --seq-4: #ff71ce; --seq-ink-4: #120626;
+  --seq-5: #ffe66d; --seq-ink-5: #120626;
+  --warn: #ffe66d;
+  --stage-bg: linear-gradient(180deg, #120626 0%, #2a0b4a 46%, #8a2470 56%, #3a0f5c 60%, #160831 100%);
+  --glow-strength: 18; --node-glow: 0.45; --edge-glow: 0.32; --edge-tint: domain; --label-bg-opacity: 0.7;
+}
+
+/* Eucalypt: light and natural - sage greys and greens, ochre, wattle gold, waterhole teal. */
+:root[data-theme="eucalypt"] {
+  --node-outline: #4a5549; --node-outline-width: 1.5;
+  color-scheme: light;
+  --logo-ink: #2F4A3A; --logo-blue: #3F7F8C; --logo-teal: #9CBF8A;
+  --page: #eceee7; --surface: #f8f9f5; --surface-2: #e9ece3; --surface-3: #dde2d4;
+  --ink: #1b231d; --ink-2: #4a5549; --muted: #6a7468; --hairline: #dadfd2;
+  --border: rgba(27, 35, 29, 0.13); --edge: #8d9787; --edge-unknown: #c3c9bc; --focus: #1b231d;
+  --shadow: 0 6px 24px rgba(27, 35, 29, 0.10), 0 1px 3px rgba(27, 35, 29, 0.08);
+  --glow: 0; --cluster-fill-opacity: 0.07;
+  --domain-1: #3f7f8c; --domain-2: #c2603a; --domain-3: #6f9a4a; --domain-4: #d39b2a;
+  --domain-5: #9a5a8a; --domain-6: #8a6f4e; --domain-7: #4f6fa8; --domain-8: #b8433f; --domain-none: #a6ab9f;
+  --seq-1: #e1ecd8; --seq-ink-1: #1b231d;
+  --seq-2: #bdd5a8; --seq-ink-2: #1b231d;
+  --seq-3: #8fb874; --seq-ink-3: #1b231d;
+  --seq-4: #4f8a46; --seq-ink-4: #ffffff;
+  --seq-5: #2f5f33; --seq-ink-5: #ffffff;
+  --warn: #d39b2a;
+  --stage-bg: radial-gradient(ellipse at 12% 0%, #eef3e6 0%, #f8f9f5 55%);
+}
+
+/* Nature: forest greens on pale moss, with topographic contour lines behind the map. */
+:root[data-theme="nature"] {
+  --node-outline: #455644; --node-outline-width: 1.5;
+  color-scheme: light;
+  --logo-ink: #2E4A2A; --logo-blue: #2B6F99; --logo-teal: #6AA36A;
+  --page: #e7eedf; --surface: #f5f8f0; --surface-2: #e4ebdb; --surface-3: #d6e0ca;
+  --ink: #18261a; --ink-2: #455644; --muted: #667563; --hairline: #d3ddc8;
+  --border: rgba(24, 38, 26, 0.14); --edge: #879781; --edge-unknown: #bfcab6; --focus: #18261a;
+  --shadow: 0 6px 24px rgba(24, 38, 26, 0.10), 0 1px 3px rgba(24, 38, 26, 0.08);
+  --glow: 0; --cluster-fill-opacity: 0.08;
+  --domain-1: #2b6f99; --domain-2: #c45a2c; --domain-3: #4f8f3a; --domain-4: #c99a1e;
+  --domain-5: #8a4f9e; --domain-6: #7a5a3a; --domain-7: #2f8f86; --domain-8: #b03a48; --domain-none: #9fa898;
+  --seq-1: #dcead0; --seq-ink-1: #18261a;
+  --seq-2: #b3d39b; --seq-ink-2: #18261a;
+  --seq-3: #7fb35f; --seq-ink-3: #18261a;
+  --seq-4: #3f7f34; --seq-ink-4: #ffffff;
+  --seq-5: #24561f; --seq-ink-5: #ffffff;
+  --warn: #c99a1e;
+  --stage-bg:
+    repeating-radial-gradient(ellipse 120% 90% at 18% 28%, transparent 0 26px, rgba(79, 110, 60, 0.10) 26px 27.5px),
+    repeating-radial-gradient(ellipse 100% 120% at 84% 76%, transparent 0 32px, rgba(79, 110, 60, 0.08) 32px 33.5px),
+    #f5f8f0;
+  --label-bg-opacity: 0.92;
+}
+
+/* Forest Night: deep green dark with soft glow and fireflies drifting behind the map. */
+:root[data-theme="forest-night"] {
+  --node-outline: var(--surface); --node-outline-width: 2;
+  color-scheme: dark;
+  --logo-ink: #E8F3EA; --logo-blue: #8FD16A; --logo-teal: #F2C94C;
+  --page: #07110c; --surface: #0b1912; --surface-2: #10241a; --surface-3: #173324;
+  --ink: #e8f3ea; --ink-2: #b7cdbb; --muted: #7f9a86; --hairline: #183527;
+  --border: rgba(200, 255, 210, 0.10); --edge: #4c6b55; --edge-unknown: #2a4233; --focus: #e8f3ea;
+  --shadow: 0 8px 28px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
+  --glow: 1; --cluster-fill-opacity: 0.09;
+  --domain-1: #5fb3d9; --domain-2: #f08a5d; --domain-3: #8fd16a; --domain-4: #f2c94c;
+  --domain-5: #c58fe6; --domain-6: #4fc3a1; --domain-7: #e86f8a; --domain-8: #a3b8ff; --domain-none: #5d7564;
+  --seq-1: #12301f; --seq-ink-1: #e8f3ea;
+  --seq-2: #1d4d31; --seq-ink-2: #e8f3ea;
+  --seq-3: #2f7a4b; --seq-ink-3: #ffffff;
+  --seq-4: #8fd16a; --seq-ink-4: #07110c;
+  --seq-5: #f2c94c; --seq-ink-5: #07110c;
+  --warn: #f2c94c;
+  --stage-bg: radial-gradient(ellipse at 50% 120%, #17402a 0%, #0b1912 58%, #07110c 100%);
+  --glow-strength: 14; --node-glow: 0.3; --label-bg-opacity: 0.7; --sky: fireflies;
+}
+
+/* Space: a nebula backdrop, a parallax starfield, planet-like nodes and stars orbiting each system. */
+:root[data-theme="space"] {
+  --node-outline: var(--surface); --node-outline-width: 2;
+  color-scheme: dark;
+  --logo-ink: #FFFFFF; --logo-blue: #6EA8FF; --logo-teal: #FFD27A;
+  --page: #02030a; --surface: #050816; --surface-2: #0b1026; --surface-3: #141b3d;
+  --ink: #eef1ff; --ink-2: #b8bfe0; --muted: #7c84ad; --hairline: #151c3d;
+  --border: rgba(170, 185, 255, 0.12); --edge: #56619a; --edge-unknown: #2a3156; --focus: #ffffff;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 1px 3px rgba(0, 0, 0, 0.5);
+  --glow: 1; --cluster-fill-opacity: 0.05;
+  --domain-1: #6ea8ff; --domain-2: #ff8a5c; --domain-3: #7ff0c9; --domain-4: #ffd27a;
+  --domain-5: #e08cff; --domain-6: #9fe36a; --domain-7: #ff6f91; --domain-8: #8f9bff; --domain-none: #5a6290;
+  --seq-1: #10183a; --seq-ink-1: #eef1ff;
+  --seq-2: #1d2e6b; --seq-ink-2: #eef1ff;
+  --seq-3: #3554b8; --seq-ink-3: #ffffff;
+  --seq-4: #6ea8ff; --seq-ink-4: #02030a;
+  --seq-5: #cfe0ff; --seq-ink-5: #02030a;
+  --warn: #ffd27a;
+  --stage-bg:
+    radial-gradient(ellipse 60% 50% at 72% 18%, rgba(110, 70, 200, 0.30), transparent 70%),
+    radial-gradient(ellipse 55% 45% at 18% 82%, rgba(30, 120, 190, 0.24), transparent 70%),
+    radial-gradient(ellipse 40% 30% at 45% 55%, rgba(200, 80, 160, 0.10), transparent 70%),
+    #03050f;
+  --glow-strength: 16; --node-glow: 0.45; --edge-opacity: 0.5; --label-bg-opacity: 0.55;
+  --sky: stars; --orbits: 1; --planets: 1;
+}

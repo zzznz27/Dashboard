@@ -1,0 +1,24 @@
+{
+  "id": "network-space-orbits",
+  "label": "Deep space",
+  "round": 3,
+  "view": "graph",
+  "layout": "network",
+  "theme": "space",
+  "animation": {
+    "ambient": "comets",
+    "onSelect": "focus-pulse",
+    "settle": true
+  },
+  "labels": {
+    "showDomain": false
+  },
+  "edges": {
+    "styleBy": "pattern",
+    "flagUncertain": true
+  },
+  "nodes": {
+    "logo": "mark"
+  },
+  "layoutOptions": {}
+}

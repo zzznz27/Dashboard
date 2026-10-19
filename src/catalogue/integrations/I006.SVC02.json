@@ -1,0 +1,21 @@
+{
+  "id": "I006.SVC02",
+  "release": "Release 2",
+  "workload": "CST02",
+  "source": [
+    "Marketing Platform"
+  ],
+  "target": [
+    "CRM"
+  ],
+  "dataFlow": "Campaign responses",
+  "pattern": "Publisher-Subscriber",
+  "sourceProtocol": "API",
+  "targetProtocol": "API",
+  "frequency": "Daily?",
+  "epic": {
+    "id": "1006",
+    "url": "https://example.com/work-items/1006"
+  },
+  "notes": "Schedule still to be confirmed with the marketing team."
+}

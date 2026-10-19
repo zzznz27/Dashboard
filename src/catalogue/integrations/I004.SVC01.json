@@ -1,0 +1,22 @@
+{
+  "id": "I004.SVC01",
+  "link": "https://example.com/wiki/integrations/I004",
+  "release": "Release 1",
+  "workload": "CST01",
+  "source": [
+    "E-commerce Store"
+  ],
+  "target": [
+    "ERP"
+  ],
+  "dataFlow": "Online orders",
+  "pattern": "Publisher-Subscriber",
+  "sourceProtocol": "Event",
+  "targetProtocol": "API",
+  "frequency": "Event-based",
+  "epic": {
+    "id": "1004",
+    "url": "https://example.com/work-items/1004"
+  },
+  "notes": ""
+}

@@ -1,0 +1,21 @@
+{
+  "id": "I012.SVC01",
+  "release": "Release 2",
+  "workload": "OPS02",
+  "source": [
+    "ERP"
+  ],
+  "target": [
+    "Supplier Portal"
+  ],
+  "dataFlow": "Purchase orders",
+  "pattern": "Publisher-Subscriber",
+  "sourceProtocol": "API",
+  "targetProtocol": "API",
+  "frequency": "Event-based",
+  "epic": {
+    "id": "1012",
+    "url": "https://example.com/work-items/1012"
+  },
+  "notes": ""
+}

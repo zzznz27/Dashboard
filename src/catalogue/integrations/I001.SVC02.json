@@ -1,0 +1,21 @@
+{
+  "id": "I001.SVC02",
+  "release": "Release 1",
+  "workload": "FIN01",
+  "source": [
+    "Bank"
+  ],
+  "target": [
+    "ERP"
+  ],
+  "dataFlow": "Bank statements",
+  "pattern": "MFT",
+  "sourceProtocol": "File (SFTP)",
+  "targetProtocol": "Recurring Import",
+  "frequency": "Daily",
+  "epic": {
+    "id": "1001",
+    "url": "https://example.com/work-items/1001"
+  },
+  "notes": ""
+}

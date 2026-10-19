@@ -1,0 +1,24 @@
+{
+  "$comment": "Page-level settings. Presets live in config/presets/*.json. Copied into web/data/site.json by the build. lab: the design lab's preview tools (Copy as preset, Compare), the compare-page link and design name in the footer; off on the live site, where the lab itself is still open to everyone through Customise…, switched on by the local preview (scripts/serve.mjs).",
+  "title": "Integration World Map",
+  "subtitle": "Which systems exchange data, from the integration catalogue",
+  "defaultPreset": "clusters-light-marks",
+  "filters": [
+    "release",
+    "workload",
+    "patternGroup",
+    "domain"
+  ],
+  "detailFields": [
+    "dataFlow",
+    "pattern",
+    "sourceProtocol",
+    "targetProtocol",
+    "frequency",
+    "release",
+    "workload",
+    "epic",
+    "notes"
+  ],
+  "lab": false
+}

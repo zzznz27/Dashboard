@@ -1,0 +1,132 @@
+{
+  "$comment": "Systems on the map. Names and aliases are matched ignoring case, spaces and punctuation. type is Internal (a platform your organisation runs) or External (a vendor or partner system).",
+  "systems": [
+    {
+      "name": "Bank",
+      "aliases": [
+        "Banking Portal"
+      ],
+      "domain": "Finance",
+      "type": "External"
+    },
+    {
+      "name": "CRM",
+      "aliases": [
+        "Customer Relationship Management"
+      ],
+      "domain": "Customer",
+      "type": "Internal"
+    },
+    {
+      "name": "Data Warehouse",
+      "aliases": [
+        "DWH"
+      ],
+      "domain": "Data & Analytics",
+      "type": "Internal"
+    },
+    {
+      "name": "E-commerce Store",
+      "aliases": [
+        "Web Shop",
+        "Online Store"
+      ],
+      "domain": "Customer",
+      "type": "External"
+    },
+    {
+      "name": "ERP",
+      "aliases": [
+        "Finance ERP",
+        "General Ledger"
+      ],
+      "domain": "Finance",
+      "type": "Internal"
+    },
+    {
+      "name": "Expense Management",
+      "aliases": [
+        "Expenses"
+      ],
+      "domain": "Finance",
+      "type": "External"
+    },
+    {
+      "name": "HR System",
+      "aliases": [
+        "HRIS"
+      ],
+      "domain": "People",
+      "type": "External"
+    },
+    {
+      "name": "Identity Provider",
+      "aliases": [
+        "IdP",
+        "SSO"
+      ],
+      "domain": "IT & Security",
+      "type": "Internal"
+    },
+    {
+      "name": "Learning Platform",
+      "aliases": [
+        "LMS"
+      ],
+      "domain": "People",
+      "type": "External"
+    },
+    {
+      "name": "Marketing Platform",
+      "aliases": [
+        "Marketing Automation"
+      ],
+      "domain": "Customer",
+      "type": "External"
+    },
+    {
+      "name": "Payment Gateway",
+      "aliases": [],
+      "domain": "Finance",
+      "type": "External"
+    },
+    {
+      "name": "Payroll",
+      "aliases": [
+        "Payroll Service"
+      ],
+      "domain": "People",
+      "type": "External"
+    },
+    {
+      "name": "Service Desk",
+      "aliases": [
+        "ITSM"
+      ],
+      "domain": "IT & Security",
+      "type": "External"
+    },
+    {
+      "name": "Shipping Carrier",
+      "aliases": [
+        "Carrier"
+      ],
+      "domain": "Operations",
+      "type": "External"
+    },
+    {
+      "name": "Supplier Portal",
+      "aliases": [],
+      "domain": "Operations",
+      "type": "External"
+    },
+    {
+      "name": "Warehouse Management",
+      "aliases": [
+        "WMS"
+      ],
+      "domain": "Operations",
+      "type": "Internal"
+    }
+  ]
+}

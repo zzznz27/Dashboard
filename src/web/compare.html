@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" data-theme="clean-light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compare designs · Integration World Map</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles/themes.css">
+  <link rel="stylesheet" href="styles/compare.css">
+  <script type="module" src="js/compare.js"></script>
+</head>
+<body>
+  <header class="bar">
+    <h1>Compare designs</h1>
+    <label>Left <select id="left" aria-label="Left design"></select></label>
+    <label>Right <select id="right" aria-label="Right design"></select></label>
+    <a href="index.html">Back to the map</a>
+  </header>
+  <main class="grid">
+    <iframe id="frame-left" title="Left design"></iframe>
+    <iframe id="frame-right" title="Right design"></iframe>
+  </main>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "id": "clusters-dark-flow",
+  "label": "Control room",
+  "round": 1,
+  "view": "graph",
+  "layout": "clusters",
+  "theme": "ops-dark",
+  "animation": {
+    "ambient": "packets",
+    "onSelect": "focus-pulse",
+    "settle": true
+  },
+  "labels": {
+    "showDomain": false
+  },
+  "edges": {
+    "styleBy": "pattern",
+    "flagUncertain": true
+  },
+  "layoutOptions": {},
+  "nodes": {
+    "logo": "mark"
+  }
+}

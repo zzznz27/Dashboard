@@ -1,0 +1,24 @@
+{
+  "id": "clusters-light-marks",
+  "label": "Everyday",
+  "round": 2,
+  "view": "graph",
+  "layout": "clusters",
+  "theme": "clean-light",
+  "animation": {
+    "ambient": "packets",
+    "onSelect": "focus-pulse",
+    "settle": true
+  },
+  "labels": {
+    "showDomain": false
+  },
+  "edges": {
+    "styleBy": "pattern",
+    "flagUncertain": true
+  },
+  "nodes": {
+    "logo": "mark"
+  },
+  "layoutOptions": {}
+}

@@ -1,0 +1,21 @@
+{
+  // F5: rebuilds the map's data from catalogue/ (stops if the catalogue doesn't pass its checks), starts the local
+  // preview and opens it in the browser. Same as `npm run dev`.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "World Map: local preview",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/scripts/serve.mjs",
+      "args": ["--port", "8080"],
+      "preLaunchTask": "World Map: build data",
+      "skipFiles": ["<node_internals>/**"],
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "World Map preview: (https?://\\S+)",
+        "uriFormat": "%s"
+      }
+    }
+  ]
+}

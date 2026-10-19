@@ -1,0 +1,45 @@
+# Integration World Map infrastructure (Bicep). Run by hand and pick the environments.
+# Register it as worldmap-platform. Set the variables below to your own values first (infra/README.md).
+name: worldmap-platform-pl-$(Build.BuildId)
+
+pr: none
+trigger: none
+
+parameters:
+  - name: selectedEnvironments
+    displayName: Environments to deploy
+    type: stringList
+    values:
+      - DEV
+    default:
+      - DEV
+
+variables:
+  - name: workload
+    value: 'worldmap'
+  # Change these to your own.
+  - name: devServiceConnection
+    value: 'sc-contoso-wmap-dev' # Azure Resource Manager service connection for the DEV subscription
+  - name: devSubscriptionId
+    value: '00000000-0000-0000-0000-000000000000' # DEV subscription ID
+  - name: deploymentLocation
+    value: 'australiaeast' # where Azure keeps the deployment's record; use your own region
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: DEV
+    condition: ${{ containsValue(parameters.selectedEnvironments, 'DEV') }}
+    jobs:
+      - template: ../templates/workload.platform.pipeline.template.yaml
+        parameters:
+          azureSubscription: ${{ variables.devServiceConnection }}
+          subscriptionId: ${{ variables.devSubscriptionId }}
+          environment: DEV
+          environmentCode: dev
+          deploymentLocation: ${{ variables.deploymentLocation }}
+          workloadCode: ${{ variables.workload }}
+
+  # Add SIT / UAT / PRD stages the same way when needed (a parameters file, service connection and
+  # environment each), with `dependsOn` on the previous stage.

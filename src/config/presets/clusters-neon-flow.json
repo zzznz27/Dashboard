@@ -1,0 +1,24 @@
+{
+  "id": "clusters-neon-flow",
+  "label": "Neon glow",
+  "round": 3,
+  "view": "graph",
+  "layout": "clusters",
+  "theme": "neon",
+  "animation": {
+    "ambient": "pulse",
+    "onSelect": "focus-pulse",
+    "settle": true
+  },
+  "labels": {
+    "showDomain": false
+  },
+  "edges": {
+    "styleBy": "pattern",
+    "flagUncertain": true
+  },
+  "nodes": {
+    "logo": "mark"
+  },
+  "layoutOptions": {}
+}

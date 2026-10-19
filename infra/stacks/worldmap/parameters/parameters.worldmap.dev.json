@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "resourceGroupName": {
+      "value": "rg-contoso-wmap-dev"
+    },
+    "location": {
+      "value": "australiaeast"
+    },
+    "appServicePlanName": {
+      "value": "asp-contoso-wmap-dev-01"
+    },
+    "appServicePlanSku": {
+      "value": "B1"
+    },
+    "webAppName": {
+      "value": "app-contoso-wmap-dev-01"
+    },
+    "userAssignedIdentityName": {
+      "value": "uai-contoso-wmap-dev-01"
+    },
+    "signInCredential": {
+      "value": "managedIdentity"
+    },
+    "keyVaultName": {
+      "value": "kv-contoso-wmap-dev-01"
+    },
+    "keyVaultSecretAdminObjectIds": {
+      "value": []
+    },
+    "entraClientId": {
+      "value": ""
+    },
+    "entraClientSecretName": {
+      "value": "worldmap-entra-client-secret"
+    },
+    "keyVaultPurgeProtection": {
+      "value": false
+    },
+    "allowedGroupObjectIds": {
+      "value": []
+    },
+    "logAnalyticsWorkspaceId": {
+      "value": ""
+    },
+    "alertActionGroupId": {
+      "value": ""
+    }
+  }
+}

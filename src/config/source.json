@@ -1,0 +1,65 @@
+{
+  "$comment": "Where the map data lives. store = the catalogue in this repo (the source of truth); set repoUrl to your repo's web URL (Azure DevOps style, ?path= is appended) to link records from the map, or leave it null. The rest is optional, for an Azure DevOps wiki: generatedPage = a wiki page the deploy pipeline can rewrite from the catalogue; wiki/catalogue/settings = an existing wiki catalogue page (a markdown table) to import from once (scripts/migrate-from-wiki.mjs) or row by row (scripts/wiki-to-record.mjs, the worldmap-data skill). Leave the URLs null if you don't use a wiki.",
+  "store": {
+    "dir": "catalogue",
+    "repoUrl": null
+  },
+  "generatedPage": {
+    "repo": "Your.Wiki",
+    "branch": "main",
+    "path": "Integrations/World-Map-Catalogue.md",
+    "pagePath": "/World Map Catalogue",
+    "pageUrl": null
+  },
+  "wiki": {
+    "repo": "Your.Wiki",
+    "branch": "main",
+    "pageBaseUrl": null
+  },
+  "catalogue": {
+    "path": "Integrations/Integrated-System-Catalogue.md",
+    "pagePath": "/Integrated System Catalogue",
+    "pageUrl": null,
+    "columns": {
+      "id": "Integration ID",
+      "release": "Release",
+      "workload": "Workload",
+      "source": "Source",
+      "target": "Target",
+      "dataFlow": "Data Flow",
+      "pattern": "Integration Pattern",
+      "sourceProtocol": "Source Protocol",
+      "targetProtocol": "Target Protocol",
+      "frequency": "Schedule/Frequency",
+      "epic": "Epic",
+      "notes": "Notes"
+    },
+    "required": [
+      "id",
+      "source",
+      "target"
+    ],
+    "relativeLinkBase": null
+  },
+  "settings": {
+    "path": "Integrations/WorldMap-Settings.md",
+    "pagePath": "/WorldMap Settings",
+    "domainColumns": {
+      "domain": "Domain",
+      "description": "Description"
+    },
+    "systemColumns": {
+      "name": "System",
+      "aliases": "Aliases",
+      "domain": "Domain",
+      "type": "Type",
+      "wikiPage": "Wiki page"
+    }
+  },
+  "systemSplitSeparators": [
+    "/",
+    ","
+  ],
+  "output": "web/data/integrations.json",
+  "report": "out/build-report.md"
+}

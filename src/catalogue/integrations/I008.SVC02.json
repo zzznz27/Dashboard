@@ -1,0 +1,21 @@
+{
+  "id": "I008.SVC02",
+  "release": "Release 1",
+  "workload": "HR01",
+  "source": [
+    "Payroll"
+  ],
+  "target": [
+    "ERP"
+  ],
+  "dataFlow": "Payroll journals",
+  "pattern": "MFT",
+  "sourceProtocol": "File",
+  "targetProtocol": "Recurring Import",
+  "frequency": "Fortnightly",
+  "epic": {
+    "id": "1008",
+    "url": "https://example.com/work-items/1008"
+  },
+  "notes": ""
+}

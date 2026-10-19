@@ -1,0 +1,21 @@
+{
+  "id": "I006.SVC01",
+  "release": "Release 2",
+  "workload": "CST02",
+  "source": [
+    "CRM"
+  ],
+  "target": [
+    "Marketing Platform"
+  ],
+  "dataFlow": "Contacts and consent",
+  "pattern": "Publisher-Subscriber",
+  "sourceProtocol": "API",
+  "targetProtocol": "API",
+  "frequency": "5 minutes",
+  "epic": {
+    "id": "1006",
+    "url": "https://example.com/work-items/1006"
+  },
+  "notes": ""
+}
